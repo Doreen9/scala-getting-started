@@ -21,15 +21,11 @@ object MyApp extends App {
     }
 
     def areWeekendDays(days: String*) = days map isWeekendDay
+    
 
-    val check = areWeekendDays("monday", "saturday", "tuesday", "sunday")
-
-    check foreach(println)
+    areWeekendDays("monday", "saturday", "tuesday", "sunday") foreach(println)
 
     def nTimes(s: String, i: Int) = print(s * i)
-
-
-
 
 
 
