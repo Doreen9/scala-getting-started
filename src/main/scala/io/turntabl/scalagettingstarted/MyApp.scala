@@ -2,21 +2,31 @@ package io.turntabl.scalagettingstarted
 
 
 object MyApp extends App {
-    val length = (word: String) => word.length()
+    val name = "Doreen"
+    val town = "Accra"
+    print(s"$name was born in $town")
 
-    val space = (sentence: String) => sentence.count(_ == ' ')
 
-    val ApplyToString = (s: String, f: (String => Int)) => f(s)
+    def treeTimes(s: String) = s * 3
 
-    println(ApplyToString("Doreen", length))
-    println(ApplyToString("Doreen was here", space))
 
-    val calculate = (instruct: String) => ((num1: Int, num2: Int) => instruct match{
-        case "add" => num1 + num2
-        case "subtract" => num1 - num2
-        case "multiply" => num1 * num2
-    })
+    def even(i: Int) = if (i % 2 == 0) true else false
 
-    val instruct = calculate("multiply")
-    println(instruct(3, 2))
+    def odd(i : Int) = if(even(i)) false else true
+
+    def wordsToLower(words: String*) = words map(_.toLowerCase)
+
+    def even2(i: Int) = even(i)
+
+    def isWeekendDay(day: String) = day match{
+        case "saturday" | "sunday" => true
+        case _ => false
+    }
+
+    def areWeekendDays(days: String*) = days map (isWeekendDay(_))
+
+    areWeekendDays("monday", "friday", "saturday") foreach (println)
+
+
+
 }
