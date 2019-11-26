@@ -1,32 +1,22 @@
 package io.turntabl.scalagettingstarted
 
+
 object MyApp extends App {
-    val name: String = "Doreen"
-    val town: String = "Accra"
-    print(s"$name was born in $town \n")
+    val length = (word: String) => word.length()
 
-    def threeTime(s: String) = s * 3
+    val space = (sentence: String) => sentence.count(_ == ' ')
 
-    def even(i: Int) = if(i % 2 == 0) true else false
+    val ApplyToString = (s: String, f: (String => Int)) => f(s)
 
-    def odd(i: Int) = if (even(i)) false else true
+    println(ApplyToString("Doreen", length))
+    println(ApplyToString("Doreen was here", space))
 
-    def wordsToLower(words: String*) = words map (_.toLowerCase)
+    val calculate = (instruct: String) => ((num1: Int, num2: Int) => instruct match{
+        case "add" => num1 + num2
+        case "subtract" => num1 - num2
+        case "multiply" => num1 * num2
+    })
 
-    def even2(i: Int) = even(i)
-
-    def isWeekendDay(day: String) = day match{
-        case "saturday" | "sunday" => true
-        case _ => false
-    }
-
-    def areWeekendDays(days: String*) = days map isWeekendDay
-    
-
-    areWeekendDays("monday", "saturday", "tuesday", "sunday") foreach(println)
-
-    def nTimes(s: String, i: Int) = print(s * i)
-
-
-
+    val instruct = calculate("multiply")
+    println(instruct(3, 2))
 }
